@@ -12,8 +12,10 @@ public:
 	double Length();
 	static void SetColor(int col);
 	static int GetColor();
+	static int Count();
 private:
 	static int color;
+	static int count;
 	int x;
 	int y;
 	int R;
@@ -22,6 +24,7 @@ private:
 };
 const double Circle::Pi = 4 * atan(1);
 int  Circle::color = 15;
+int  Circle::count = 0;
 
 Circle::Circle() :Circle(0, 0, 0)
 {
@@ -30,7 +33,7 @@ Circle::Circle() :Circle(0, 0, 0)
 Circle::Circle(int _x, int _y, int _R) : x(_x), y(_y), R(_R)
 //Circle::Circle(int x, int y, int R) : x(x), y(y), R(R), Pi (4 * atan(1))
 {
-
+	count++;
 	//Pi = 6;
 	//x = x;
 	/*x = _x;
@@ -63,6 +66,10 @@ int Circle::GetColor()
 {
 	return color;
 }
+int Circle::Count()
+{
+	return count;
+}
 int main()
 {
 	Circle Kolo(1, 1, 1);
@@ -83,5 +90,6 @@ int main()
 	Kolo.Print();
 	H.Print();
 
+	cout << "count = " << Circle::Count()<<endl;
 	cout << "The end main\n" << sizeof(Circle);
 }
