@@ -6,6 +6,7 @@ class Circle
 public:
 	Circle(int, int, int);
 	Circle();
+	~Circle();
 	void Print();
 	int Diametr();
 	double Square();
@@ -13,6 +14,7 @@ public:
 	static void SetColor(int col);
 	static int GetColor();
 	static int Count();
+
 private:
 	static int color;
 	static int count;
@@ -29,6 +31,10 @@ int  Circle::count = 0;
 Circle::Circle() :Circle(0, 0, 0)
 {
 	//Pi = 4 * atan(1);
+}
+Circle::~Circle()
+{
+	//count--;
 }
 Circle::Circle(int _x, int _y, int _R) : x(_x), y(_y), R(_R)
 //Circle::Circle(int x, int y, int R) : x(x), y(y), R(R), Pi (4 * atan(1))
@@ -70,26 +76,36 @@ int Circle::Count()
 {
 	return count;
 }
+void Test(Circle k) {
+	k.Print();
+}
+
 int main()
 {
-	Circle Kolo(1, 1, 1);
-	Kolo.Print();
-	cout << "\nD=" << Kolo.Diametr() << endl;
-	cout << "S=" << Kolo.Square() << endl;
-	cout << "L=" << Kolo.Length() << endl;
-	Circle H;
-	H.Print();
+	{
+		Circle Kolo(1, 1, 1);
+		Kolo.Print();
+		cout << "\nD=" << Kolo.Diametr() << endl;
+		cout << "S=" << Kolo.Square() << endl;
+		cout << "L=" << Kolo.Length() << endl;
+		Circle H;
+		H.Print();
 
-	//Kolo.color = 5;
-	//Circle::color = 7;
+		//Kolo.color = 5;
+		//Circle::color = 7;
 
-	Circle::SetColor(7);
-	Kolo.SetColor(17);
-	cout << Circle::GetColor() << endl;
+		Circle::SetColor(7);
+		Kolo.SetColor(17);
+		cout << Circle::GetColor() << endl;
 
-	Kolo.Print();
-	H.Print();
-
+		Kolo.Print();
+		H.Print();
+		{
+			Circle Obj;
+			Test(Obj);//4 ? 
+		}
+		//Test(H);
+	}
 	cout << "count = " << Circle::Count()<<endl;
 	cout << "The end main\n" << sizeof(Circle);
 }
