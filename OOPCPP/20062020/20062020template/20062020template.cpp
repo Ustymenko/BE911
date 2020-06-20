@@ -17,12 +17,14 @@ using namespace std;
 //}
 //50   | 20.99
 //5.9  | 20 
-
+///	
+///
 template< typename T, typename U>
 auto Max(T a, U b) ///->decltype(a+b)
 {
 	return a > b ? a : b;
 }
+///
 template<typename T>
 T* Max(T* a, T* b)
 {
@@ -75,7 +77,8 @@ int main()
 		char a[] = "Anna";
 		char b[] = "Petro";
 		//cout << "max(" << a << "," << b << ")=" << Max<double>(a, b) << endl;
-		cout << "max(" << a << "," << b << ")=" << Max((const char*)a, (const char*)b) << "\t" << typeid(Max(a, b)).name() << endl;
+		cout << "max(" << a << "," << b << ")=" << Max((const char*)a, (const char*)b) << "\t" << typeid(Max((const char*)a, (const char*)b)).name() << endl;
 	}
+	//end
 
 }
